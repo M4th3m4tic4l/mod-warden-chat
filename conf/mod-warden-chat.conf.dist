@@ -1,0 +1,96 @@
+################################################################################
+# mod-warden-chat.conf
+################################################################################
+
+[worldserver]
+
+# Habilitar el módulo
+# Default: 1
+WardenChat.Enable = 1
+
+# Nivel mínimo de GM para usar comandos .bigbro
+# 0 = Player | 1 = Moderator | 2 = GameMaster | 3 = Administrator
+# Default: 2
+WardenChat.MinGMLevel = 2
+
+###############################################################################
+# MUTE AUTOMÁTICO
+# Solo aplica a palabras que tengan sanction=1 en warden_blacklist
+###############################################################################
+
+# Habilitar el mute automático al mencionar una palabra con sanction=1
+# Si es 0, la palabra se registra igualmente pero no mutea
+# Default: 0
+WardenChat.Mute.Enable = 0
+
+# Duración del mute automático en segundos
+# Default: 60
+WardenChat.Mute.DurationSeconds = 60
+
+###############################################################################
+# RETENCIÓN DE MENSAJES
+###############################################################################
+
+# Días que se conservan los mensajes flagueados antes de eliminarse
+# 0  = nunca eliminar (se acumulan indefinidamente)
+# 30 = eliminar mensajes de más de 30 días
+# 60 = eliminar mensajes de más de 60 días
+# 90 = eliminar mensajes de más de 90 días (recomendado)
+# Default: 90
+WardenChat.Retention.Days = 90
+
+###############################################################################
+# BLOQUEO DE MENSAJES
+# Impide que el mensaje se envíe si contiene una palabra prohibida.
+# También puede activarse por palabra con block=1 en warden_blacklist.
+###############################################################################
+
+# Habilitar bloqueo global (aplica a todas las palabras)
+# Si una palabra tiene block=1 en la DB, se bloquea independientemente de esto
+# Default: 0
+WardenChat.Block.Enable = 0
+
+###############################################################################
+# REEMPLAZO DE MENSAJES
+# Sustituye el mensaje original por una frase definida.
+# No aplica si el mensaje está bloqueado.
+# Cada palabra puede tener su propio reemplazo en la columna 'replacement'.
+# Si replacement es NULL, se usa el texto global definido aquí.
+###############################################################################
+
+# Habilitar reemplazo global de mensajes flagueados
+# Default: 0
+WardenChat.Replace.Enable = 0
+
+# Frase global de reemplazo (se usa si replacement de la palabra es NULL)
+# Default: "Este mensaje ha sido reemplazado por contener lenguaje inapropiado."
+WardenChat.Replace.Text = "Este mensaje ha sido reemplazado por contener lenguaje inapropiado."
+
+###############################################################################
+# LOG COMPLETO DE SUSURROS
+# Guarda todos los susurros entre jugadores en warden_whisper_log
+###############################################################################
+
+# Habilitar el log completo de susurros
+# Default: 1
+WardenChat.WhisperLog.Enable = 1
+
+# Días de retención del log de susurros (0 = nunca borrar)
+# Default: 90
+WardenChat.WhisperLog.RetentionDays = 90
+
+###############################################################################
+# VIGILANCIA DE GMs (Watch)
+###############################################################################
+
+# Permitir que los GMs se puedan vigilar entre sí con .bigbro watch
+# 0 = no permitido (un GM nunca puede chuzar a otro GM)
+# 1 = permitido según el nivel configurado abajo
+# Default: 0
+WardenChat.Watch.AllowSpyOnGMs = 0
+
+# Nivel mínimo de GM necesario para poder vigilar a otros GMs
+# Solo aplica si AllowSpyOnGMs = 1
+# 1 = Moderator | 2 = GameMaster | 3 = Administrator
+# Default: 3 (solo admins pueden chuzar a otros GMs)
+WardenChat.Watch.MinLevelToSpyOnGMs = 3
